@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Speedy Sums</title>
+</head>
+<body>
+  <h1>Speedy Sums ⚡</h1>
+
+  <p id="question"></p>
+  <input type="number" id="answer" placeholder="Your answer">
+  <button onclick="checkAnswer()">Submit</button>
+
+  <p id="result"></p>
+  <p>Score: <span id="score">0</span></p>
+
+  <script>
+    let num1, num2, score = 0;
+
+    function newQuestion() {
+      num1 = Math.floor(Math.random() * 10);
+      num2 = Math.floor(Math.random() * 10);
+      document.getElementById("question").innerText = 
+        num1 + " + " + num2 + " = ?";
+    }
+
+    function checkAnswer() {
+      let userAns = document.getElementById("answer").value;
+      if (parseInt(userAns) === num1 + num2) {
+        score++;
+        document.getElementById("result").innerText = "Correct!";
+      } else {
+        document.getElementById("result").innerText = "Wrong!";
+      }
+      document.getElementById("score").innerText = score;
+      document.getElementById("answer").value = "";
+      newQuestion();
+    }
+
+    newQuestion();
+  </script>
+</body>
+</html>
